@@ -1,5 +1,6 @@
 from flask import Flask, flash, render_template, request, redirect, url_for
 from celery import Celery
+from time import sleep
 
 app = Flask(__name__)
 app.config.from_object("config")
@@ -12,6 +13,7 @@ client.conf.update(app.config)
 
 @client.task
 def add(data):
+    sleep(5)
     return data["first"] + data["second"]
 
 
