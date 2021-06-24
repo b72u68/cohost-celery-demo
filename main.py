@@ -2,9 +2,12 @@ from flask import Flask, flash, render_template, request, redirect, url_for
 from celery import Celery
 
 app = Flask(__name__)
+app.config.from_object("config")
+
 client = Celery(app.name,
-                broker="redis://localhost:6379/0",
-                backend="redis://localhost:6379/0")
+                broker=app.config['CELERY_BROKER_URL'],
+                backend=app.config['CELERY_RESULT_BACKEND'])
+client.conf.update(app.config)
 
 
 @client.task
