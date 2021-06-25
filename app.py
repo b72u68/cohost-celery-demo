@@ -1,8 +1,9 @@
+from config import Config
 from flask import Flask, flash, render_template, request, redirect, url_for
 from tasks import add, subtract, multiply, divide
 
 app = Flask(__name__)
-app.config.from_pyfile("config.py")
+app.config["SECRET_KEY"] = Config.FLASK_SECRET_KEY
 
 
 def get_data(request):
@@ -75,4 +76,4 @@ def divide_numbers():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", debug=True)
+    app.run(host="0.0.0.0", port=5000)
