@@ -8,7 +8,7 @@ app.config.from_pyfile("config.py")
 def get_data(request):
     data = {}
 
-    if request.form.get("first").strip() == "" or request.form.get("second").strip == "":
+    if not (request.form["first"].strip() and request.form["second"].strip()):
         return None
 
     data["first"] = int(request.form.get("first"))
@@ -29,7 +29,8 @@ def add_numbers():
 
         if data:
             result = add.apply_async(args=[data], duration=20)
-            flash(f"Result: {data['first']} + {data['second']} = {result.get()}")
+            flash("Result: %d + %d = %d" %
+                  (data["first"], data["second"], result.get()))
 
     return redirect(url_for("home"))
 
@@ -41,7 +42,8 @@ def subtract_numbers():
 
         if data:
             result = subtract.apply_async(args=[data], duration=20)
-            flash(f"Result: {data['first']} - {data['second']} = {result.get()}")
+            flash("Result: %d - %d = %d" %
+                  (data["first"], data["second"], result.get()))
 
     return redirect(url_for("home"))
 
@@ -53,7 +55,8 @@ def multiply_numbers():
 
         if data:
             result = multiply.apply_async(args=[data], duration=20)
-            flash(f"Result: {data['first']} x {data['second']} = {result.get()}")
+            flash("Result: %d x %d = %d" %
+                  (data["first"], data["second"], result.get()))
 
     return redirect(url_for("home"))
 
@@ -65,7 +68,8 @@ def divide_numbers():
 
         if data:
             result = divide.apply_async(args=[data], duration=20)
-            flash(f"Result: {data['first']} ÷ {data['second']} = {result.get()}")
+            flash("Result: %d ÷  %d = %d" %
+                  (data["first"], data["second"], result.get()))
 
     return redirect(url_for("home"))
 
