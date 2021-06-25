@@ -28,12 +28,14 @@
   </head>
 </html>
 <body style="padding: 100px">
-  {% with messages = get_flashed_messages() %} {% if messages %} {% for message
-  in messages %}
-  <p>{{ message }}</p>
-  {% endfor%}
-  <h2>Perform other calculation:</h2>
-  {% endif %} {% endwith %}
+  <div>
+    {% with messages = get_flashed_messages() %} {% if messages %} {% for
+    message in messages %}
+    <p>{{ message }}</p>
+    {% endfor%}
+    <h2>Perform another calculation:</h2>
+    {% endif %} {% endwith %}
+  </div>
   <form action="{{ url_for('home') }}" method="POST">
     <div class="form-row">
       <div class="form-group col-md-6">
