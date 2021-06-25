@@ -1,20 +1,8 @@
 from flask import Flask, flash, render_template, request, redirect, url_for
-from celery import Celery
-from time import sleep
+from tasks import add
 
 app = Flask(__name__)
-app.config.from_object("config")
-
-client = Celery(app.name,
-                broker=app.config['CELERY_BROKER_URL'],
-                backend=app.config['CELERY_RESULT_BACKEND'])
-client.conf.update(app.config)
-
-
-@client.task
-def add(data):
-    sleep(5)
-    return data["first"] + data["second"]
+app.config.from_pyfile("config.py")
 
 
 @app.route("/", methods=["POST", "GET"])
@@ -28,8 +16,8 @@ def home():
         data["first"] = int(request.form.get("first"))
         data["second"] = int(request.form.get("second"))
 
-        flash(add.apply_async(args=[data], duration=20))
-        flash("Numbers added!")
+        result = add.apply_async(args=[data], duration=20)
+        flash(f"Result: {data['first']} + {data['second']} = {result.get()}")
 
         return redirect(url_for("home"))
 
