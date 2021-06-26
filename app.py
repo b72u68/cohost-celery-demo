@@ -7,15 +7,10 @@ app.config["SECRET_KEY"] = Config.FLASK_SECRET_KEY
 
 
 def get_data(request):
-    data = {}
-
     if not (request.form["first"].strip() and request.form["second"].strip()):
         return None
 
-    data["first"] = int(request.form.get("first"))
-    data["second"] = int(request.form.get("second"))
-
-    return data
+    return [int(request.form.get("first")), int(request.form.get("second"))]
 
 
 @app.route("/")
@@ -29,9 +24,9 @@ def add_numbers():
         data = get_data(request)
 
         if data:
-            result = add.apply_async(args=[data], duration=20)
+            task = add.apply_async(args=data, duration=20)
             flash("Result: %d + %d = %d" %
-                  (data["first"], data["second"], result.get()))
+                  (data[0], data[1], task.get()))
 
     return redirect(url_for("home"))
 
@@ -42,9 +37,9 @@ def subtract_numbers():
         data = get_data(request)
 
         if data:
-            result = subtract.apply_async(args=[data], duration=20)
+            task = subtract.apply_async(args=data, duration=20)
             flash("Result: %d - %d = %d" %
-                  (data["first"], data["second"], result.get()))
+                  (data[0], data[1], task.get()))
 
     return redirect(url_for("home"))
 
@@ -55,9 +50,9 @@ def multiply_numbers():
         data = get_data(request)
 
         if data:
-            result = multiply.apply_async(args=[data], duration=20)
+            task = multiply.apply_async(args=data, duration=20)
             flash("Result: %d x %d = %d" %
-                  (data["first"], data["second"], result.get()))
+                  (data[0], data[1], task.get()))
 
     return redirect(url_for("home"))
 
@@ -68,9 +63,9 @@ def divide_numbers():
         data = get_data(request)
 
         if data:
-            result = divide.apply_async(args=[data], duration=20)
+            task = divide.apply_async(args=data, duration=20)
             flash("Result: %d ÷  %d = %d" %
-                  (data["first"], data["second"], result.get()))
+                  (data[0], data[1], task.get()))
 
     return redirect(url_for("home"))
 

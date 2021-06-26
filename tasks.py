@@ -8,28 +8,28 @@ client = Celery("tasks",
 
 
 @client.task
-def add(data):
+def add(x, y):
     sleep(1)
-    return data["first"] + data["second"]
+    return x + y
 
 
 @client.task
-def subtract(data):
+def subtract(x, y):
     sleep(1)
-    return data["first"] - data["second"]
+    return x - y
 
 
 @client.task
-def multiply(data):
+def multiply(x, y):
     sleep(1)
-    return data["first"] * data["second"]
+    return x * y
 
 
 @client.task
-def divide(data):
+def divide(x, y):
     sleep(1)
 
-    if data["second"] == 0:
+    if y == 0:
         return "Error"
 
-    return data["first"] / data["second"]
+    return x / y
