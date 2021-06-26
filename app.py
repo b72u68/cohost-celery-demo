@@ -18,7 +18,7 @@ def get_data(request):
     return data
 
 
-@app.route("/", methods=["POST", "GET"])
+@app.route("/")
 def home():
     return render_template("index.html")
 
