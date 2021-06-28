@@ -24,6 +24,9 @@ brew install docker
 sudo pacman -S docker
 ```
 
+Visit [Install Docker](https://docs.docker.com/engine/install/) for website
+for more information.
+
 ## Install docker compose
 
 ### Linux
