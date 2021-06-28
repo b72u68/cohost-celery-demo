@@ -1,6 +1,6 @@
 # cohost-celery-demo
 
-A demo website trying to develop a backend with Flask, Celery, and Redis
+A demo website backend with Flask, Celery, and Redis
 
 ## Local setup
 
