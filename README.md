@@ -18,13 +18,27 @@ sudo apt install docker
 brew install docker
 ```
 
-### Arch
+### Arch Linux
 
 ```
 sudo pacman -S docker
 ```
 
 ## Install docker compose
+
+### Linux
+
+Install the stable release of Docker compose using `curl`:
+
+```
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+```
+
+Apply executable permissions to the binary:
+
+```
+chmod +x /usr/local/bin/docker-compose
+```
 
 Visit [Install docker-compose](https://docs.docker.com/compose/install/) website
 for more information.
