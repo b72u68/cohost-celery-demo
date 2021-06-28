@@ -26,7 +26,7 @@ sudo pacman -S docker
 
 ## Install docker compose
 
-Visit !(Install docker-compose)[https://docs.docker.com/compose/install/] website
+Visit [Install docker-compose](https://docs.docker.com/compose/install/) website
 for more information.
 
 ## Build
