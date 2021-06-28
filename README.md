@@ -46,19 +46,19 @@ chmod +x /usr/local/bin/docker-compose
 Visit [Install docker-compose](https://docs.docker.com/compose/install/) website
 for more information.
 
-### Build
+## Build
 
 ```
 docker-compose build
 ```
 
-### Start server
+## Start server
 
 ```
 docker-compose up
 
 ```
 
-### Access
+## Access
 
 Go to `http://localhost:5000/`.
