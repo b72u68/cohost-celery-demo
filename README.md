@@ -4,7 +4,7 @@ A demo website trying to develop a backend with Flask, Celery, and Redis
 
 ## Local setup
 
-### Install docker
+### Install Docker
 
 #### Ubuntu
 
@@ -27,7 +27,7 @@ sudo pacman -S docker
 Visit [Install Docker](https://docs.docker.com/engine/install/) for website
 for more information.
 
-### Install docker compose
+### Install Docker Compose
 
 #### Linux
 
