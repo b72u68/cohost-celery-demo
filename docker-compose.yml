@@ -1,0 +1,32 @@
+version: "3.9"
+services:
+  web:
+    build: .
+    command: python3 app.py
+    depends_on:
+      - redis
+    ports:
+      - "5000:5000"
+    restart: always
+    networks:
+      - flask-redis-celery
+
+  redis:
+    image: redis
+    command: redis-server --bind redis --port 6379
+    ports:
+      - "6379:6379"
+    networks:
+      - flask-redis-celery
+
+
+  worker:
+    build: .
+    command: celery -A tasks worker --loglevel=info
+    depends_on:
+      - redis
+    networks:
+      - flask-redis-celery
+
+networks:
+  flask-redis-celery:
