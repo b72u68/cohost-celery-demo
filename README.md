@@ -24,7 +24,7 @@ brew install docker
 sudo pacman -S docker
 ```
 
-Visit [Install Docker](https://docs.docker.com/engine/install/) for website
+Visit [Install Docker](https://docs.docker.com/engine/install/) documentation
 for more information.
 
 ### Install Docker Compose
@@ -43,7 +43,7 @@ Apply executable permissions to the binary:
 chmod +x /usr/local/bin/docker-compose
 ```
 
-Visit [Install docker-compose](https://docs.docker.com/compose/install/) website
+Visit [Install docker-compose](https://docs.docker.com/compose/install/) documentation
 for more information.
 
 ## Build
